@@ -45,16 +45,37 @@ class tx_veguestbook_pi1 extends AbstractPlugin
     public $extKey = "ve_guestbook"; // The extension key.
 
     /**
+     * must be public to work for wt_spamshield
      * @var array
      */
-    protected $config;
-    protected $strEntryTable = 'tx_veguestbook_entries';
-    protected $code = '';
-    protected $tt_news = [];
+    public $config;
+
+    /**
+     * must be public to work for wt_spamshield
+     * @var string
+     */
+    public $strEntryTable = 'tx_veguestbook_entries';
+
+    /**
+     * must be public to work for wt_spamshield
+     * @var string
+     */
+    public $code = '';
+
+    /**
+     * must be public to work for wt_spamshield
+     * @var array
+     */
+    public $tt_news = [];
     protected $for_tt_news;
     protected $tt_news_url_params_list = 'tx_ttnews[cat],tx_ttnews[tt_news],tx_ttnews[backPid],tx_ttnews[year],tx_ttnews[month],tx_ttnews[day],cHash';
     protected $sys_language_uid;
-    protected $templateCode;
+
+    /**
+     * must be public to work for wt_spamshield
+     * @var string
+     */
+    public $templateCode;
 
     /**
      * @var ContentObjectRenderer
@@ -122,7 +143,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
         if ($this->code == 'FORM') {
             $this->pi_USER_INT_obj = 1;
-            $GLOBALS["TSFE"]->set_no_cache();
+            $this->frontendController->set_no_cache();
         } else {
             $this->pi_USER_INT_obj = 0;
         }
@@ -193,7 +214,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $this->config['guestbook'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'guestbook', 'sDEF') ? implode(GeneralUtility::intExplode(',', $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'guestbook', 'sDEF')), ',') : '';
 
         if ($this->config['guestbook'] < 1) {
-            $this->config['guestbook'] = $GLOBALS["TSFE"]->id;
+            $this->config['guestbook'] = $this->frontendController->id;
         }
 
         // Max items per page shown in list & teaser mode
@@ -670,10 +691,9 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         if (is_array($this->LOCAL_LANG) && count($this->LOCAL_LANG) > 0) {
             $markerArray = $this->initFormMarkerArray();
 
-            $markerArray['###PID###'] = $GLOBALS["TSFE"]->id;
-            $url = $this->getUrl($GLOBALS["TSFE"]->id);
+            $markerArray['###PID###'] = $this->frontendController->id;
+            $url = $this->getUrl($this->frontendController->id);
             $markerArray['###ACTION_URL###'] = htmlspecialchars($url);
-
             $markerArray['###FORM_ERROR###'] = '';
             $markerArray['###FORM_ERROR_FIELDS###'] = '';
 
