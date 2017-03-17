@@ -3,7 +3,6 @@
 	<meta type="array">
 		<description></description>
 		<type>module</type>
-		<csh_table></csh_table>
 		<labelContext type="array">
 		</labelContext>
 	</meta>
@@ -253,8 +252,6 @@ Message: ###ENTRY###
 
 Clickez ici pour aller à la page: ###URL###</label>		
 		</languageKey>
-		<languageKey index="es" type="array">
-		</languageKey>
 		<languageKey index="nl" type="array">
 			<label index="form_firstname">Voornaam</label>
 			<label index="form_surname">Achternaam</label>
@@ -339,10 +336,6 @@ www: ###HOMEPAGE###
 Zpráva: ###ENTRY###
 
 Pro zobrazení návštěvní knihy klikněte: ###URL###</label>
-		</languageKey>
-		<languageKey index="pl" type="array">
-		</languageKey>
-		<languageKey index="si" type="array">
 		</languageKey>
 		<languageKey index="fi" type="array">
 			<label index="form_firstname">Etunimi</label>
@@ -452,14 +445,6 @@ Ziyaretçi defterine ulaşmak için tıklayın: ###URL###</label>
 			<label index="pi_list_browseresults_next">Nästa &gt;</label>
 			<label index="pi_list_browseresults_displays">Visar resultat ###SPAN_BEGIN###%s till %s&lt;/span&gt; av ###SPAN_BEGIN###%s&lt;/span&gt;</label>
 		</languageKey>
-		<languageKey index="pt" type="array">
-		</languageKey>
-		<languageKey index="ru" type="array">
-		</languageKey>
-		<languageKey index="ro" type="array">
-		</languageKey>
-		<languageKey index="ch" type="array">
-		</languageKey>
 		<languageKey index="sk" type="array">
 			<label index="form_surname">Meno</label>
 			<label index="form_email">Mail</label>
@@ -473,12 +458,6 @@ Ziyaretçi defterine ulaşmak için tıklayın: ###URL###</label>
 			<label index="pi_list_browseresults_page">Stránka</label>
 			<label index="pi_list_browseresults_next">staršie</label>
 			<label index="pi_list_browseresults_displays">Zobrazujem výsledky od ###SPAN_BEGIN###%s až %s&lt;/span&gt; z ###SPAN_BEGIN###%s&lt;/span&gt;</label>
-		</languageKey>
-		<languageKey index="lt" type="array">
-		</languageKey>
-		<languageKey index="is" type="array">
-		</languageKey>
-		<languageKey index="hr" type="array">
 		</languageKey>
 		<languageKey index="hu" type="array">
 			<label index="form_firstname">Keresztnév</label>
@@ -510,18 +489,6 @@ Weboldal: ###HOMEPAGE###
 Üzenet: ###ENTRY###
 
 Kattintson ide a vebdégkönyv megtekintéséhez: ###URL###</label>
-		</languageKey>
-		<languageKey index="gl" type="array">
-		</languageKey>
-		<languageKey index="th" type="array">
-		</languageKey>
-		<languageKey index="gr" type="array">
-		</languageKey>
-		<languageKey index="hk" type="array">
-		</languageKey>
-		<languageKey index="eu" type="array">
-		</languageKey>
-		<languageKey index="bg" type="array">
 		</languageKey>
 		<languageKey index="br" type="array">
 			<label index="form_firstname">Nome</label>
@@ -566,12 +533,6 @@ Mensagem: ###ENTRY###
 
 Clique aqui para ver o livro de visitas: ###URL###</label>
 		</languageKey>
-		<languageKey index="et" type="array">
-		</languageKey>
-		<languageKey index="ar" type="array">
-		</languageKey>
-		<languageKey index="he" type="array">
-		</languageKey>
 		<languageKey index="ua" type="array">
 			<label index="form_firstname">Ім'я</label>
 			<label index="form_surname">Прізвище</label>
@@ -615,24 +576,6 @@ E-Mail адреса: ###EMAIL###
 Повідомлення: ###ENTRY###
 
 Натисніть сюди, щоб переглянути цей запис: ###URL###</label>
-		</languageKey>
-		<languageKey index="lv" type="array">
-		</languageKey>
-		<languageKey index="jp" type="array">
-		</languageKey>
-		<languageKey index="vn" type="array">
-		</languageKey>
-		<languageKey index="ca" type="array">
-		</languageKey>
-		<languageKey index="ba" type="array">
-		</languageKey>
-		<languageKey index="kr" type="array">
-		</languageKey>
-		<languageKey index="eo" type="array">
-		</languageKey>
-		<languageKey index="my" type="array">
-		</languageKey>
-		<languageKey index="hi" type="array">
 		</languageKey>
 	</data>
 	<orig_hash type="array">
@@ -736,10 +679,6 @@ E-Mail адреса: ###EMAIL###
 			<label index="feedback_mail_subject" type="integer">8475056</label>
 			<label index="feedback_mail_text" type="integer">168171582</label>
 		</languageKey>
-		<languageKey index="fr" type="array">
-		</languageKey>
-		<languageKey index="es" type="array">
-		</languageKey>
 		<languageKey index="nl" type="array">
 			<label index="form_firstname" type="integer">4290288</label>
 			<label index="form_surname" type="integer">149247351</label>
@@ -789,10 +728,6 @@ E-Mail адреса: ###EMAIL###
 			<label index="notification_mail_text" type="integer">184011694</label>
 			<label index="feedback_mail_subject" type="integer">8475056</label>
 			<label index="feedback_mail_text" type="integer">168171582</label>
-		</languageKey>
-		<languageKey index="pl" type="array">
-		</languageKey>
-		<languageKey index="si" type="array">
 		</languageKey>
 		<languageKey index="fi" type="array">
 			<label index="form_firstname" type="integer">4290288</label>
@@ -866,14 +801,6 @@ E-Mail адреса: ###EMAIL###
 			<label index="pi_list_browseresults_next" type="integer">17482704</label>
 			<label index="pi_list_browseresults_displays" type="integer">152851483</label>
 		</languageKey>
-		<languageKey index="pt" type="array">
-		</languageKey>
-		<languageKey index="ru" type="array">
-		</languageKey>
-		<languageKey index="ro" type="array">
-		</languageKey>
-		<languageKey index="ch" type="array">
-		</languageKey>
 		<languageKey index="sk" type="array">
 			<label index="form_surname" type="integer">149247351</label>
 			<label index="form_email" type="integer">8578394</label>
@@ -887,12 +814,6 @@ E-Mail адреса: ###EMAIL###
 			<label index="pi_list_browseresults_next" type="integer">17482704</label>
 			<label index="form_error" type="integer">203109214</label>
 			<label index="form_invalid_field" type="integer">267236056</label>
-		</languageKey>
-		<languageKey index="lt" type="array">
-		</languageKey>
-		<languageKey index="is" type="array">
-		</languageKey>
-		<languageKey index="hr" type="array">
 		</languageKey>
 		<languageKey index="hu" type="array">
 			<label index="form_firstname" type="integer">4290288</label>
@@ -916,18 +837,6 @@ E-Mail адреса: ###EMAIL###
 			<label index="pi_list_browseresults_displays" type="integer">152851483</label>
 			<label index="notification_mail_subject" type="integer">218094461</label>
 			<label index="notification_mail_text" type="integer">184011694</label>
-		</languageKey>
-		<languageKey index="gl" type="array">
-		</languageKey>
-		<languageKey index="th" type="array">
-		</languageKey>
-		<languageKey index="gr" type="array">
-		</languageKey>
-		<languageKey index="hk" type="array">
-		</languageKey>
-		<languageKey index="eu" type="array">
-		</languageKey>
-		<languageKey index="bg" type="array">
 		</languageKey>
 		<languageKey index="br" type="array">
 			<label index="form_firstname" type="integer">4290288</label>
@@ -954,12 +863,6 @@ E-Mail адреса: ###EMAIL###
 			<label index="feedback_mail_subject" type="integer">8475056</label>
 			<label index="feedback_mail_text" type="integer">168171582</label>
 		</languageKey>
-		<languageKey index="et" type="array">
-		</languageKey>
-		<languageKey index="ar" type="array">
-		</languageKey>
-		<languageKey index="he" type="array">
-		</languageKey>
 		<languageKey index="ua" type="array">
 			<label index="form_firstname" type="integer">4290288</label>
 			<label index="form_surname" type="integer">149247351</label>
@@ -985,24 +888,6 @@ E-Mail адреса: ###EMAIL###
 			<label index="notification_mail_text" type="integer">184011694</label>
 			<label index="feedback_mail_subject" type="integer">8475056</label>
 			<label index="feedback_mail_text" type="integer">168171582</label>
-		</languageKey>
-		<languageKey index="lv" type="array">
-		</languageKey>
-		<languageKey index="jp" type="array">
-		</languageKey>
-		<languageKey index="vn" type="array">
-		</languageKey>
-		<languageKey index="ca" type="array">
-		</languageKey>
-		<languageKey index="ba" type="array">
-		</languageKey>
-		<languageKey index="kr" type="array">
-		</languageKey>
-		<languageKey index="eo" type="array">
-		</languageKey>
-		<languageKey index="my" type="array">
-		</languageKey>
-		<languageKey index="hi" type="array">
 		</languageKey>
 	</orig_hash>
 	<orig_text type="array">

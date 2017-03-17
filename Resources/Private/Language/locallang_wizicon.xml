@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>language labels for ve_guestbook</description>
+		<type>module</type>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="pi1_title">Guestbook</label>
+			<label index="pi1_plus_wiz_description">Adds a guestbook to the page</label>
+		</languageKey>
+		<languageKey index="dk" type="array">
+			<label index="pi1_title">Gæstebog</label>
+			<label index="pi1_plus_wiz_description">Sætter en gæstebog på siden</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="pi1_title">Gästebuch</label>
+			<label index="pi1_plus_wiz_description">Einbindung des Gästebuchs</label>
+		</languageKey>
+		<languageKey index="no" type="array">
+			<label index="pi1_title">Gjestebok</label>
+			<label index="pi1_plus_wiz_description">Legger til gjestebok til siden</label>
+		</languageKey>
+		<languageKey index="it" type="array">
+			<label index="pi1_title">Guestbook</label>
+			<label index="pi1_plus_wiz_description">Aggiungi un Guestbook alla pagina</label>
+		</languageKey>
+		<languageKey index="nl" type="array">
+			<label index="pi1_title">Gastenboek</label>
+			<label index="pi1_plus_wiz_description">Voeg een gastenboek toe aan de pagina</label>
+		</languageKey>
+		<languageKey index="fi" type="array">
+			<label index="pi1_title">Vieraskirja</label>
+			<label index="pi1_plus_wiz_description">Lisää vieraskirjan sivulle</label>
+		</languageKey>
+		<languageKey index="tr" type="array">
+			<label index="pi1_title">Ziyaretçi defteri</label>
+			<label index="pi1_plus_wiz_description">Sayfaya ziyaretçi defteri ekle.</label>
+		</languageKey>
+		<languageKey index="se" type="array">
+			<label index="pi1_title">Gästbok</label>
+			<label index="pi1_plus_wiz_description">Lägger en gästbok till sidan</label>
+		</languageKey>
+		<languageKey index="hu" type="array">
+			<label index="pi1_title">Vendégkönyv</label>
+			<label index="pi1_plus_wiz_description">Vendégkönyv hozzáadása az oldalhoz</label>
+		</languageKey>
+		<languageKey index="br" type="array">
+			<label index="pi1_title">Livro de Visitas</label>
+			<label index="pi1_plus_wiz_description">Adiciona um livro de visitas à página</label>
+		</languageKey>
+	</data>
+</T3locallang>

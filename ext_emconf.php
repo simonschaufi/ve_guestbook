@@ -10,38 +10,30 @@
  * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array (
-	'title' => 'Modern Guestbook / Commenting system',
-	'description' => 'Many features. Easy installation. Mature extension - actually no known bug - see bugs.typo3.org.',
-	'category' => 'plugin',
-	'shy' => 0,
-	'version' => '2.12.0',
-	'dependencies' => '',
-	'conflicts' => '',
-	'priority' => '',
-	'loadOrder' => '',
-	'module' => '',
-	'state' => 'stable',
-	'uploadfolder' => 0,
-	'createDirs' => 'uploads/tx_veguestbook/rte/',
-	'modify_tables' => '',
-	'clearcacheonload' => 0,
-	'lockType' => '',
-	'author' => 'Udo von Eynern',
-	'author_email' => 'udo@voneynern.de',
-	'author_company' => 'Freelancer Udo von Eynern',
-	'CGLcompliance' => NULL,
-	'CGLcompliance_note' => NULL,
-	'constraints' => 
-	array (
-		'depends' => 
-		array (
-		),
-		'conflicts' => '',
-		'suggests' => 
-		array (
-		),
-	),
+$EM_CONF[$_EXTKEY] = array(
+    'title' => 'Modern Guestbook / Commenting system',
+    'description' => 'Modern Guestbook / Commenting system',
+    'author' => 'Udo von Eynern',
+    'author_email' => 'udo@voneynern.de',
+    'author_company' => 'Freelancer Udo von Eynern',
+    'category' => 'plugin',
+    'version' => '3.1.0',
+    'state' => 'stable',
+    'uploadfolder' => 0,
+    'createDirs' => '',
+    'clearCacheOnLoad' => 0,
+    'constraints' => [
+        'depends' => [
+            'typo3' => '7.6.0 - 7.9.99',
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
+    ],
+    'autoload' => [
+        'psr-4' => [
+            'Simonschaufi\\VeGuestbook\\' => 'Classes',
+        ],
+    ],
 );
-
-?>

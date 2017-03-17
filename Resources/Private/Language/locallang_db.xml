@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Database</description>
+        <type>database</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="tt_content.list_type_pi1">Guestbook</label>
+
+            <label index="cms_layout.mode">Displaying: %s</label>
+            <label index="cms_layout.not_configured">Plugin is not configured!</label>
+
+            <label index="tx_veguestbook_entries">Guestbook entry</label>
+            <label index="tx_veguestbook_entries.firstname">Firstname</label>
+            <label index="tx_veguestbook_entries.surname">Surname</label>
+            <label index="tx_veguestbook_entries.email">E-Mail</label>
+            <label index="tx_veguestbook_entries.homepage">Website</label>
+            <label index="tx_veguestbook_entries.place">Place</label>
+            <label index="tx_veguestbook_entries.entry">Message</label>
+            <label index="tx_veguestbook_entries.entrycomment">Comment</label>
+            <label index="tx_veguestbook_entries.remote_addr">Remote Address</label>
+            <label index="tx_veguestbook_entries.uid_tt_news">[uid_tt_news]</label>
+            <label index="tx_veguestbook_entries.crdate">Creation date/time</label>
+            <label index="tx_veguestbook_entries.tstamp">Last update</label>
+        </languageKey>
+        <languageKey index="dk" type="array">
+            <label index="tx_veguestbook_entries">Skrevet i gæstebogen</label>
+            <label index="tx_veguestbook_entries.firstname">Fornavn</label>
+            <label index="tx_veguestbook_entries.surname">Efternavn</label>
+            <label index="tx_veguestbook_entries.email">E-mail</label>
+            <label index="tx_veguestbook_entries.homepage">Hjemmeside</label>
+            <label index="tx_veguestbook_entries.place">By</label>
+            <label index="tx_veguestbook_entries.entry">Besked</label>
+            <label index="tx_veguestbook_entries.entrycomment">Kommentar</label>
+            <label index="tx_veguestbook_entries.crdate">Oprettet dato/tid</label>
+            <label index="tt_content.list_type_pi1">Gæstebog</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="tx_veguestbook_entries">Gästebuch-Eintrag</label>
+            <label index="tx_veguestbook_entries.firstname">Vorname</label>
+            <label index="tx_veguestbook_entries.surname">Nachname</label>
+            <label index="tx_veguestbook_entries.email">E-Mail</label>
+            <label index="tx_veguestbook_entries.homepage">Homepage</label>
+            <label index="tx_veguestbook_entries.place">Ort</label>
+            <label index="tx_veguestbook_entries.entry">Nachricht</label>
+            <label index="tx_veguestbook_entries.entrycomment">Kommentar</label>
+            <label index="tx_veguestbook_entries.remote_addr">IP</label>
+            <label index="tx_veguestbook_entries.crdate">Erstellungszeit</label>
+            <label index="tx_veguestbook_entries.tstamp">Letzte Änderung</label>
+            <label index="tt_content.list_type_pi1">Gästebuch</label>
+        </languageKey>
+        <languageKey index="no" type="array">
+            <label index="tx_veguestbook_entries">Gjestebok artikkel</label>
+            <label index="tx_veguestbook_entries.firstname">Fornavn</label>
+            <label index="tx_veguestbook_entries.surname">Etternavn</label>
+            <label index="tx_veguestbook_entries.email">Epost</label>
+            <label index="tx_veguestbook_entries.homepage">Webside</label>
+            <label index="tx_veguestbook_entries.place">Sted</label>
+            <label index="tx_veguestbook_entries.entry">Melding</label>
+            <label index="tx_veguestbook_entries.entrycomment">Kommentar</label>
+            <label index="tx_veguestbook_entries.remote_addr">Fjernadresse</label>
+            <label index="tx_veguestbook_entries.crdate">Laget dato/tid</label>
+            <label index="tx_veguestbook_entries.tstamp">Sist oppdatert</label>
+            <label index="tt_content.list_type_pi1">Gjestebok</label>
+        </languageKey>
+        <languageKey index="it" type="array">
+            <label index="tx_veguestbook_entries">Elemento</label>
+            <label index="tx_veguestbook_entries.firstname">Nome</label>
+            <label index="tx_veguestbook_entries.surname">Cognome</label>
+            <label index="tx_veguestbook_entries.email">Email</label>
+            <label index="tx_veguestbook_entries.homepage">Sito Web</label>
+            <label index="tx_veguestbook_entries.place">Località</label>
+            <label index="tx_veguestbook_entries.entry">Messaggio</label>
+            <label index="tx_veguestbook_entries.entrycomment">Commento</label>
+            <label index="tx_veguestbook_entries.remote_addr">Indirizzo Remoto</label>
+            <label index="tx_veguestbook_entries.uid_tt_news">[uid_tt_news]</label>
+            <label index="tx_veguestbook_entries.crdate">Data/Ora di creazione</label>
+            <label index="tx_veguestbook_entries.tstamp">Ultimo aggiornamento</label>
+            <label index="tt_content.list_type_pi1">Guestbook</label>
+        </languageKey>
+        <languageKey index="nl" type="array">
+            <label index="tx_veguestbook_entries">Gastenboek bericht</label>
+            <label index="tx_veguestbook_entries.firstname">Voornaam</label>
+            <label index="tx_veguestbook_entries.surname">Achternaam</label>
+            <label index="tx_veguestbook_entries.email">Email</label>
+            <label index="tx_veguestbook_entries.homepage">Website</label>
+            <label index="tx_veguestbook_entries.place">Woonplaats</label>
+            <label index="tx_veguestbook_entries.entry">Bericht</label>
+            <label index="tx_veguestbook_entries.entrycomment">Opmerking</label>
+            <label index="tx_veguestbook_entries.crdate">Aanmaak datum/tijd</label>
+            <label index="tt_content.list_type_pi1">Gastenboek</label>
+        </languageKey>
+        <languageKey index="cz" type="array">
+            <label index="tx_veguestbook_entries">Záznam návštìvní knihy</label>
+            <label index="tx_veguestbook_entries.firstname">Jméno</label>
+            <label index="tx_veguestbook_entries.surname">Pøíjmení</label>
+            <label index="tx_veguestbook_entries.email">E-mail</label>
+            <label index="tx_veguestbook_entries.homepage">www</label>
+            <label index="tx_veguestbook_entries.place">Místo</label>
+            <label index="tx_veguestbook_entries.entry">Vzkaz</label>
+            <label index="tx_veguestbook_entries.entrycomment">Komentáø</label>
+            <label index="tx_veguestbook_entries.remote_addr">Vzdálená adresa</label>
+            <label index="tx_veguestbook_entries.crdate">Datum/èas vytvoøení</label>
+            <label index="tx_veguestbook_entries.tstamp">Poslední aktualizace</label>
+            <label index="tt_content.list_type_pi1">Návštìvní kniha</label>
+        </languageKey>
+        <languageKey index="fi" type="array">
+            <label index="tx_veguestbook_entries">Vieraskirjan kirjaus</label>
+            <label index="tx_veguestbook_entries.firstname">Etunimi</label>
+            <label index="tx_veguestbook_entries.surname">Sukunimi</label>
+            <label index="tx_veguestbook_entries.email">Sähköpostiosoite</label>
+            <label index="tx_veguestbook_entries.homepage">Korisivut</label>
+            <label index="tx_veguestbook_entries.place">Sijainti</label>
+            <label index="tx_veguestbook_entries.entry">Viesti</label>
+            <label index="tx_veguestbook_entries.entrycomment">Kommentti</label>
+            <label index="tx_veguestbook_entries.crdate">Luonti päiväys/aika</label>
+            <label index="tt_content.list_type_pi1">Vieraskirja</label>
+        </languageKey>
+        <languageKey index="tr" type="array">
+            <label index="tx_veguestbook_entries">Ziyaretçi defteri girdisi</label>
+            <label index="tx_veguestbook_entries.firstname">Ad</label>
+            <label index="tx_veguestbook_entries.surname">Soyadý</label>
+            <label index="tx_veguestbook_entries.email">E-Posta</label>
+            <label index="tx_veguestbook_entries.homepage">Website</label>
+            <label index="tx_veguestbook_entries.place">Yer</label>
+            <label index="tx_veguestbook_entries.entry">Mesaj</label>
+            <label index="tx_veguestbook_entries.entrycomment">Yorum</label>
+            <label index="tx_veguestbook_entries.remote_addr">IP</label>
+            <label index="tx_veguestbook_entries.crdate">Oluþturma tarihi</label>
+            <label index="tx_veguestbook_entries.tstamp">Son güncelleme</label>
+            <label index="tt_content.list_type_pi1">Ziyaretçi defteri</label>
+        </languageKey>
+        <languageKey index="se" type="array">
+            <label index="tx_veguestbook_entries">Gästbokens inmatning</label>
+            <label index="tx_veguestbook_entries.firstname">Förnamn</label>
+            <label index="tx_veguestbook_entries.surname">Efternamn</label>
+            <label index="tx_veguestbook_entries.email">Epost</label>
+            <label index="tx_veguestbook_entries.homepage">Hemsida</label>
+            <label index="tx_veguestbook_entries.place">Plats</label>
+            <label index="tx_veguestbook_entries.entry">Meddelande</label>
+            <label index="tx_veguestbook_entries.entrycomment">Kommentar</label>
+            <label index="tx_veguestbook_entries.crdate">Skapad datum/tid</label>
+            <label index="tt_content.list_type_pi1">Gästbok</label>
+        </languageKey>
+        <languageKey index="hu" type="array">
+            <label index="tx_veguestbook_entries">Vendégkönyv bejegyzés</label>
+            <label index="tx_veguestbook_entries.firstname">Keresztnév</label>
+            <label index="tx_veguestbook_entries.surname">Családnév</label>
+            <label index="tx_veguestbook_entries.email">E-Mail</label>
+            <label index="tx_veguestbook_entries.homepage">Weboldal</label>
+            <label index="tx_veguestbook_entries.place">Hely</label>
+            <label index="tx_veguestbook_entries.entry">Üzenet</label>
+            <label index="tx_veguestbook_entries.entrycomment">Megjegyzés</label>
+            <label index="tx_veguestbook_entries.crdate">Bejegyzés dátuma/ideje</label>
+            <label index="tt_content.list_type_pi1">Vendégkönyv</label>
+        </languageKey>
+        <languageKey index="br" type="array">
+            <label index="tx_veguestbook_entries">Entrada no livro de visitas</label>
+            <label index="tx_veguestbook_entries.firstname">Nome</label>
+            <label index="tx_veguestbook_entries.surname">Sobrenome</label>
+            <label index="tx_veguestbook_entries.email">E-Mail</label>
+            <label index="tx_veguestbook_entries.homepage">Website</label>
+            <label index="tx_veguestbook_entries.place">Localização</label>
+            <label index="tx_veguestbook_entries.entry">Mensagem</label>
+            <label index="tx_veguestbook_entries.entrycomment">Comentário</label>
+            <label index="tx_veguestbook_entries.crdate">Data e hora de criação</label>
+            <label index="tt_content.list_type_pi1">Livro de visitas</label>
+        </languageKey>
+        <languageKey index="ua" type="array">
+            <label index="tx_veguestbook_entries">Çàïèñ ó ãîñòüîâ³é êíèç³</label>
+            <label index="tx_veguestbook_entries.firstname">²ì\'ÿ</label>
+            <label index="tx_veguestbook_entries.surname">Ïð³çâèùå</label>
+            <label index="tx_veguestbook_entries.email">E-Mail</label>
+            <label index="tx_veguestbook_entries.homepage">Âåá-ñòîð³íêà</label>
+            <label index="tx_veguestbook_entries.place">Çâ³äêè</label>
+            <label index="tx_veguestbook_entries.entry">Ïîâ³äîìëåííÿ</label>
+            <label index="tx_veguestbook_entries.entrycomment">Êîìåíòàð</label>
+            <label index="tx_veguestbook_entries.uid_tt_news">[uid_tt_news]</label>
+            <label index="tx_veguestbook_entries.crdate">Äàòà ñòâîðåííÿ</label>
+            <label index="tx_veguestbook_entries.tstamp">Îñòàííº îíîâëåííÿ</label>
+            <label index="tt_content.list_type_pi1">Ãîñòüîâà êíèãà</label>
+        </languageKey>
+    </data>
+</T3locallang>

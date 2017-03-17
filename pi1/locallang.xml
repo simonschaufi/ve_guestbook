@@ -167,7 +167,6 @@
 			<label index="teaser_headline">Ultimi inserimenti del Guestbook</label>
 			<label index="teaser_more">leggi tutto</label>
 		</languageKey>
-		<languageKey index="fr"></languageKey>
 		<languageKey index="es" type="array">
 			<label index="feedback_mail_subject">Entrada del libro de la huésped(###SERVER_NAME###)</label>
 			<label index="feedback_mail_text">Hola ###FIRSTNAME### ###SURNAME###, &lt;br /&gt;    &lt;br /&gt;agradece por tu entrada del libro de la huésped: &lt;br /&gt;    &lt;br /&gt;apelidos: &lt;br /&gt;    &lt;br /&gt;e-mail: ###EMAIL### &lt;br /&gt;    &lt;br /&gt;sitio: ###PLACE### &lt;br /&gt;    &lt;br /&gt;página web: ###HOMEPAGE### &lt;br /&gt;    &lt;br /&gt;mesaje: ###ENTRY### &lt;br /&gt;    &lt;br /&gt;    &lt;br /&gt;    &lt;br /&gt;chascar aquí para ver el libro de la huésped : ###URL###</label>
@@ -245,8 +244,6 @@
 			<label index="teaser_headline">Poslední záznamy v návštěvní knize</label>
 			<label index="teaser_more">číst víc</label>
 		</languageKey>
-		<languageKey index="pl"></languageKey>
-		<languageKey index="si"></languageKey>
 		<languageKey index="fi" type="array">
 			<label index="feedback_mail_subject">Vieraskirjan kirjaus (###SERVER_NAME###)</label>
 			<label index="feedback_mail_text">Hei ###FIRSTNAME### ###SURNAME###,&lt;br /&gt;&lt;br /&gt;kiitos kirjauksestasi vieraskirjaamme:&lt;br /&gt;&lt;br /&gt;Nimi:&lt;br /&gt;E-Mail: ###EMAIL##&lt;br /&gt;Sijainti: ###PLACE###&lt;br /&gt;Website: ###HOMEPAGE###&lt;br /&gt;Viesti: ###ENTRY###&lt;br /&gt;&lt;br /&gt;Katso vieraskirja kirjaustasi: ###URL###</label>
@@ -319,14 +316,6 @@
 			<label index="teaser_headline">Senaste tillägg i gästboken</label>
 			<label index="teaser_more">läs mera</label>
 		</languageKey>
-		<languageKey index="pt"></languageKey>
-		<languageKey index="ru"></languageKey>
-		<languageKey index="ro"></languageKey>
-		<languageKey index="ch"></languageKey>
-		<languageKey index="sk"></languageKey>
-		<languageKey index="lt"></languageKey>
-		<languageKey index="is"></languageKey>
-		<languageKey index="hr"></languageKey>
 		<languageKey index="hu" type="array">
 			<label index="form_email">E-Mail</label>
 			<label index="form_entry">Üzenet</label>
@@ -350,12 +339,6 @@
 			<label index="teaser_headline">Legfrissebb bejegyzések a vendégkönyvben</label>
 			<label index="teaser_more">tovább olvas</label>
 		</languageKey>
-		<languageKey index="gl"></languageKey>
-		<languageKey index="th"></languageKey>
-		<languageKey index="gr"></languageKey>
-		<languageKey index="hk"></languageKey>
-		<languageKey index="eu"></languageKey>
-		<languageKey index="bg"></languageKey>
 		<languageKey index="br" type="array">
 			<label index="feedback_mail_subject">Entrada no livro de visitas (###SERVER_NAME###)</label>
 			<label index="feedback_mail_text">Olá ###FIRSTNAME### ###SURNAME###,&lt;br /&gt;&lt;br /&gt;obrigado por sua mensagem no livro de visitas:&lt;br /&gt;&lt;br /&gt;Nome:&lt;br /&gt;E-Mail: ###EMAIL###&lt;br /&gt;Localização: ###PLACE###&lt;br /&gt;Website: ###HOMEPAGE###&lt;br /&gt;Mensagem: ###ENTRY###&lt;br /&gt;&lt;br /&gt;Clique aqui para ver o livro de visitas: ###URL###</label>
@@ -381,9 +364,6 @@
 			<label index="teaser_headline">Últimas entradas no livro de visitas</label>
 			<label index="teaser_more">ler mais</label>
 		</languageKey>
-		<languageKey index="et"></languageKey>
-		<languageKey index="ar"></languageKey>
-		<languageKey index="he"></languageKey>
 		<languageKey index="ua" type="array">
 			<label index="feedback_mail_subject">Запис в гостьовій (###SERVER_NAME###)</label>
 			<label index="feedback_mail_text">Доброго дня ###FIRSTNAME### ###SURNAME###,&lt;br /&gt;&lt;br /&gt;Дякуємо за коментар у гостьовій книзі:&lt;br /&gt;&lt;br /&gt;Ім'я: ###FIRSTNAME### ###SURNAME###&lt;br /&gt;E-Mail адреса: ###EMAIL###&lt;br /&gt;Звідки: ###PLACE###&lt;br /&gt;Веб сайт: ###HOMEPAGE###&lt;br /&gt;Повідомлення: ###ENTRY###&lt;br /&gt;&lt;br /&gt;Натисніть сюди, щоб переглянути цей запис: ###URL###</label>
@@ -410,15 +390,6 @@
 			<label index="teaser_headline">Останні записи в гостьовій книзі</label>
 			<label index="teaser_more">читати далі</label>
 		</languageKey>
-		<languageKey index="lv"></languageKey>
-		<languageKey index="jp"></languageKey>
-		<languageKey index="vn"></languageKey>
-		<languageKey index="ca"></languageKey>
-		<languageKey index="ba"></languageKey>
-		<languageKey index="kr"></languageKey>
-		<languageKey index="eo"></languageKey>
-		<languageKey index="my"></languageKey>
-		<languageKey index="hi"></languageKey>
 		<languageKey index="fo" type="array">
 			<label index="form_firstname">Navn</label>
 			<label index="form_surname">Eftirnavn</label>
@@ -464,8 +435,5 @@ Boð: ###ENTRY###
 
 Trýst her fyri at síggja gestabókina: ###URL###</label>
 		</languageKey>
-
-		<languageKey index="fa"></languageKey>
-		<languageKey index="sr"></languageKey>
 	</data>
 </T3locallang>

@@ -1,0 +1,34 @@
+{
+	"name": "simonschaufi/ve_guestbook",
+	"type": "typo3-cms-extension",
+	"description": "Guestbook extension, based on extbase & fluid for TYPO3 CMS",
+	"keywords": [
+		"TYPO3",
+		"extension",
+		"guestbook"
+	],
+	"homepage": "https://github.com/simonschaufi/ve_guestbook",
+	"support": {
+		"issues": "https://github.com/simonschaufi/ve_guestbook/issues"
+	},
+	"authors": [
+		{
+			"name": "Simon Schaufelberger",
+			"role": "Developer"
+		}
+	],
+	"license": "GPL-2.0+",
+	"version": "3.1.0",
+	"require": {
+		"typo3/cms-core": ">=7.6,<8.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Simonschaufi\\VeGuestbook\\": "Classes"
+		}
+	},
+	"replace": {
+		"ve_guestbook": "self.version",
+		"typo3-ter/ve-guestbook": "self.version"
+	}
+}
