@@ -1,3 +1,6 @@
 plugin.tx_veguestbook_pi1 {
-    file.templateFile = EXT:ve_guestbook/Resources/Private/Templates/template.html
+	file.templateFile = EXT:ve_guestbook/Resources/Private/Templates/template.html
+	emoticons.active = 0
+	email_from_name =
+	email_from_mail =
 }

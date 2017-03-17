@@ -6,8 +6,8 @@ plugin.tx_veguestbook_pi1 {
 	sortingField = crdate
 	sortingDirection = desc
 	limit = 5
-	email_from_name =
-	email_from_mail =
+	email_from_name = {$plugin.tx_veguestbook_pi1.email_from_name}
+	email_from_mail = {$plugin.tx_veguestbook_pi1.email_from_mail}
 	allowedTags = <a>,<br>,<b>,<li>,<ol>,<p>,<strong>,<u>,<ul>
 	obligationfields =
 
@@ -20,7 +20,7 @@ plugin.tx_veguestbook_pi1 {
 	clearCacheCmdOnInsert =
 
 	emoticons {
-		active = 0
+		active = {$plugin.tx_veguestbook_pi1.emoticons.active}
 		
 		10 = IMAGE
 		10 {
@@ -28,7 +28,6 @@ plugin.tx_veguestbook_pi1 {
 			params = hspace="1" vspace="1"
 			border = 0
 			altText = Emoticon
-			titleText = Emoticon
 		}
 
 		subst {
