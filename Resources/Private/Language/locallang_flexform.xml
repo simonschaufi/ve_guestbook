@@ -77,7 +77,7 @@
 			<label index="ve_guestbook.pi_flexform.obligation_fields">Pflichtfelder:</label>
 			<label index="ve_guestbook.pi_flexform.strip_tags">HTML-Tags entfernen?</label>
 			<label index="ve_guestbook.pi_flexform.email_validation">E-Mail validieren?</label>
-			<label index="ve_guestbook.pi_flexform.website_validation">Website überprüfen?</label>
+			<label index="ve_guestbook.pi_flexform.website_validation">Webseite überprüfen?</label>
 			<label index="ve_guestbook.pi_flexform.redirect_page">Zielseite nach Eintrag:</label>
 			<label index="ve_guestbook.pi_flexform.notification_mail">E-Mail-Benachrichtigung nach Eintrag:</label>
 			<label index="ve_guestbook.pi_flexform.whitelist_mail">Mail Whitelist (Kommagetrennt):</label>

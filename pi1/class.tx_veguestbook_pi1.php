@@ -40,39 +40,38 @@ use TYPO3\CMS\IndexedSearch\Indexer;
  */
 class tx_veguestbook_pi1 extends AbstractPlugin
 {
-    public $prefixId = "tx_veguestbook_pi1"; // Same as class name
-    public $scriptRelPath = "pi1/class.tx_veguestbook_pi1.php"; // Path to this script relative to the extension dir.
-    public $extKey = "ve_guestbook"; // The extension key.
+    public $prefixId = 'tx_veguestbook_pi1'; // Same as class name
+    public $scriptRelPath = 'pi1/class.tx_veguestbook_pi1.php'; // Path to this script relative to the extension dir.
+    public $extKey = 've_guestbook'; // The extension key.
 
     /**
-     * must be public to work for wt_spamshield
+     * must be public to work with hooks
      * @var array
      */
     public $config;
 
     /**
-     * must be public to work for wt_spamshield
+     * must be public to work with hooks
      * @var string
      */
     public $strEntryTable = 'tx_veguestbook_entries';
 
     /**
-     * must be public to work for wt_spamshield
+     * must be public to work with hooks
      * @var string
      */
     public $code = '';
 
     /**
-     * must be public to work for wt_spamshield
+     * must be public to work with hooks
      * @var array
+     * @TODO: remove when wt_spamshield is not using it any more
      */
     public $tt_news = [];
-    protected $for_tt_news;
-    protected $tt_news_url_params_list = 'tx_ttnews[cat],tx_ttnews[tt_news],tx_ttnews[backPid],tx_ttnews[year],tx_ttnews[month],tx_ttnews[day],cHash';
     protected $sys_language_uid;
 
     /**
-     * must be public to work for wt_spamshield
+     * must be public to work with hooks
      * @var string
      */
     public $templateCode;
@@ -80,8 +79,8 @@ class tx_veguestbook_pi1 extends AbstractPlugin
     /**
      * @var ContentObjectRenderer
      */
-    protected $local_cObj;
-    protected $postvars;
+    protected $localContentObject;
+    protected $postVars;
     protected $errorFields;
 
     /**
@@ -99,7 +98,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
      */
     public function main($content, $conf)
     {
-        $this->local_cObj = GeneralUtility::makeInstance(ContentObjectRenderer::class);
+        $this->localContentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
         $this->init($conf);
 
         switch ($this->code) {
@@ -143,7 +142,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
         if ($this->code == 'FORM') {
             $this->pi_USER_INT_obj = 1;
-            $this->frontendController->set_no_cache();
         } else {
             $this->pi_USER_INT_obj = 0;
         }
@@ -237,13 +235,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $flex_teasercut = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'teasercut', 's_list');
         $this->config['teasercut'] = $flex_teasercut ? $flex_teasercut : $this->conf['teasercut'];
 
-        //for tt_news
-        $this->tt_news = $this->getAddParams($this->tt_news_url_params_list);
-
-        if ($this->tt_news['tx_ttnews[tt_news]'] > 0) {
-            $this->for_tt_news = true;
-        }
-
         // Cutting words
         $flex_wordcut = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'wordcut', 's_list');
         $this->config['wordcut'] = $flex_wordcut ? $flex_wordcut : $this->conf['wordcut'];
@@ -274,9 +265,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         }
 
         $temp_where = 'pid IN (' . $this->config['pid_list'] . ')' . $language_filter . $this->cObj->enableFields($this->strEntryTable);
-        if ($this->for_tt_news) {
-            $temp_where = ' uid_tt_news=' . intval($this->tt_news['tx_ttnews[tt_news]']) . ' AND ' . $temp_where;
-        }
         $res = $this->databaseConnection->exec_SELECTquery('*', $this->strEntryTable, $temp_where);
 
         $count = $this->databaseConnection->sql_num_rows($res);
@@ -343,9 +331,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
             }
 
             $temp_where = 'pid IN (' . $this->config['pid_list'] . ')' . $language_filter . $this->cObj->enableFields($this->strEntryTable);
-            if ($this->for_tt_news) {
-                $temp_where = ' uid_tt_news=' . intval($this->tt_news['tx_ttnews[tt_news]']) . ' AND ' . $temp_where;
-            }
 
             $res = $this->databaseConnection->exec_SELECTquery('*', $this->strEntryTable, $temp_where, '', $orderBy, $limit_start . ',' . $this->config['limit']);
 
@@ -380,43 +365,35 @@ class tx_veguestbook_pi1 extends AbstractPlugin
     protected function getPageBrowser($markerArray)
     {
         $cache = 1;
-        $newsCount = $this->internal['res_count'];
-        $begin_at = $this->piVars['pointer'] * $this->config['limit'];
+        $entryCount = $this->internal['res_count'];
+        $beginAt = $this->piVars['pointer'] * $this->config['limit'];
         // Make Next link
-        if ($newsCount > $begin_at + $this->config['limit']) {
-            $next = ($begin_at + $this->config['limit'] > $newsCount) ? $newsCount - $this->config['limit'] : $begin_at + $this->config['limit'];
+        if ($entryCount > $beginAt + $this->config['limit']) {
+            $next = ($beginAt + $this->config['limit'] > $entryCount) ? $entryCount - $this->config['limit'] : $beginAt + $this->config['limit'];
             $next = intval($next / $this->config['limit']);
 
             $params = ($next !== 0 ? [$this->prefixId . '[pointer]' => $next] : []);
 
-            if ($this->for_tt_news) {
-                $params = array_merge($params, $this->tt_news);
-            }
-
             $next_link = $this->pi_linkTP($this->pi_getLL('pi_list_browseresults_next', 'Next >'), $params, $cache);
 
-            $markerArray['###LINK_NEXT###'] = $this->local_cObj->stdWrap($next_link, $this->conf['pageBrowser.']['next_stdWrap.']);
+            $markerArray['###LINK_NEXT###'] = $this->localContentObject->stdWrap($next_link, $this->conf['pageBrowser.']['next_stdWrap.']);
         } else {
             $markerArray['###LINK_NEXT###'] = '';
         }
         // Make Previous link
-        if ($begin_at) {
-            $prev = ($begin_at - $this->config['limit'] < 0) ? 0 : $begin_at - $this->config['limit'];
+        if ($beginAt) {
+            $prev = ($beginAt - $this->config['limit'] < 0) ? 0 : $beginAt - $this->config['limit'];
             $prev = intval($prev / $this->config['limit']);
             $params = ($prev !== 0 ? [$this->prefixId . '[pointer]' => $prev] : []);
 
-            if ($this->for_tt_news) {
-                $params = array_merge($params, $this->tt_news);
-            }
-
-            $prev_link = $this->pi_linkTP($this->pi_getLL('pi_list_browseresults_prev', '< Previous'), $params, $cache);
-            $markerArray['###LINK_PREV###'] = $this->local_cObj->stdWrap($prev_link, $this->conf['pageBrowser.']['previous_stdWrap.']);
+            $prevLink = $this->pi_linkTP($this->pi_getLL('pi_list_browseresults_prev', '< Previous'), $params, $cache);
+            $markerArray['###LINK_PREV###'] = $this->localContentObject->stdWrap($prevLink, $this->conf['pageBrowser.']['previous_stdWrap.']);
         } else {
             $markerArray['###LINK_PREV###'] = '';
         }
 
-        $pages = ceil($newsCount / $this->config['limit']);
-        $actualPage = floor($begin_at / $this->config['limit']);
+        $pages = ceil($entryCount / $this->config['limit']);
+        $actualPage = floor($beginAt / $this->config['limit']);
 
         if (ceil($actualPage - $this->internal['maxPages'] / 2) > 0) {
             $firstPage = ceil($actualPage - $this->internal['maxPages'] / 2);
@@ -438,29 +415,25 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $lastPage = ($lastPage + $addLast) <= $pages ? ($lastPage + $addLast) : $pages;
 
         for ($i = $firstPage; $i < $lastPage; $i++) {
-            if (($begin_at >= $i * $this->config['limit']) && ($begin_at < $i * $this->config['limit'] + $this->config['limit'])) {
+            if (($beginAt >= $i * $this->config['limit']) && ($beginAt < $i * $this->config['limit'] + $this->config['limit'])) {
                 $item = ($this->conf['pageBrowser.']['showPBrowserText'] ? $this->pi_getLL('pi_list_browseresults_page', 'Page') : '') . ( string )($i + 1);
-                $markerArray['###PAGES###'] .= $this->local_cObj->stdWrap($item, $this->conf['pageBrowser.']['activepage_stdWrap.']) . ' ';
+                $markerArray['###PAGES###'] .= $this->localContentObject->stdWrap($item, $this->conf['pageBrowser.']['activepage_stdWrap.']) . ' ';
             } else {
                 $item = ($this->conf['pageBrowser.']['showPBrowserText'] ? $this->pi_getLL('pi_list_browseresults_page', 'Page') : '') . ( string )($i + 1);
 
                 $params = ($i !== 0 ? [$this->prefixId . '[pointer]' => $i] : []);
 
-                if ($this->for_tt_news) {
-                    $params = array_merge($params, $this->tt_news);
-                }
+                $link = $this->pi_linkTP($this->localContentObject->stdWrap($item, $this->conf['pageBrowser.']['pagelink_stdWrap.']), $params, $cache) . ' ';
 
-                $link = $this->pi_linkTP($this->local_cObj->stdWrap($item, $this->conf['pageBrowser.']['pagelink_stdWrap.']), $params, $cache) . ' ';
-
-                $markerArray['###PAGES###'] .= $this->local_cObj->stdWrap($link, $this->conf['pageBrowser.']['page_stdWrap.']);
+                $markerArray['###PAGES###'] .= $this->localContentObject->stdWrap($link, $this->conf['pageBrowser.']['page_stdWrap.']);
             }
         }
 
-        $end_at = ($begin_at + $this->config['limit']);
+        $end_at = ($beginAt + $this->config['limit']);
 
         if ($this->conf['pageBrowser.']['showResultCount']) {
 
-            $markerArray['###RESULT_COUNT###'] = ($this->internal['res_count'] ? sprintf(str_replace('###SPAN_BEGIN###', '<span' . $this->pi_classParam('browsebox-strong') . '>', $this->pi_getLL('pi_list_browseresults_displays', 'Displaying results ###SPAN_BEGIN###%s to %s</span> out of ###SPAN_BEGIN###%s</span>')), $this->internal['res_count'] > 0 ? ($begin_at + 1) : 0, min([
+            $markerArray['###RESULT_COUNT###'] = ($this->internal['res_count'] ? sprintf(str_replace('###SPAN_BEGIN###', '<span' . $this->pi_classParam('browsebox-strong') . '>', $this->pi_getLL('pi_list_browseresults_displays', 'Displaying results ###SPAN_BEGIN###%s to %s</span> out of ###SPAN_BEGIN###%s</span>')), $this->internal['res_count'] > 0 ? ($beginAt + 1) : 0, min([
                 $this->internal['res_count'],
                 $end_at
             ]), $this->internal['res_count']) : $this->pi_getLL('pi_list_browseresults_noResults', 'Sorry, no items were found.'));
@@ -542,23 +515,23 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         }
 
         if (!empty ($row['email'])) {
-            $markerArray["###GUESTBOOK_EMAIL_URL###"] = htmlspecialchars($this->get_url('', $row['email']));
+            $markerArray['###GUESTBOOK_EMAIL_URL###'] = htmlspecialchars($this->get_url('', $row['email']));
 
             if (!empty ($this->config['email_subst'])) {
-                $markerArray["###GUESTBOOK_EMAIL###"] = str_replace('@', $this->config['email_subst'], trim($row['email']));
+                $markerArray['###GUESTBOOK_EMAIL###'] = str_replace('@', $this->config['email_subst'], trim($row['email']));
             } else {
-                $markerArray["###GUESTBOOK_EMAIL###"] = trim($row['email']);
+                $markerArray['###GUESTBOOK_EMAIL###'] = trim($row['email']);
             }
         }
 
         if (!empty ($row['homepage']) && $row['homepage'] != 'http://') {
-            $markerArray["###GUESTBOOK_HOMEPAGE_URL###"] = htmlspecialchars($this->get_url('', $row['homepage']));
-            $markerArray["###GUESTBOOK_HOMEPAGE###"] = $this->cObj->typolink($this->cObj->stdWrap($row['homepage'], $this->conf['homepage.']), $this->conf);
+            $markerArray['###GUESTBOOK_HOMEPAGE_URL###'] = htmlspecialchars($this->get_url('', $row['homepage']));
+            $markerArray['###GUESTBOOK_HOMEPAGE###'] = $this->cObj->typolink($this->cObj->stdWrap($row['homepage'], $this->conf['homepage.']), $this->conf);
         }
 
-        $markerArray['###GUESTBOOK_DATE###'] = $this->local_cObj->stdWrap($row['crdate'], $this->conf['datetime_stdWrap.']);
-        $markerArray['###GUESTBOOK_ONLYTIME###'] = $this->local_cObj->stdWrap($row['crdate'], $this->conf['time_stdWrap.']);
-        $markerArray['###GUESTBOOK_ONLYDATE###'] = $this->local_cObj->stdWrap($row['crdate'], $this->conf['date_stdWrap.']);
+        $markerArray['###GUESTBOOK_DATE###'] = $this->localContentObject->stdWrap($row['crdate'], $this->conf['datetime_stdWrap.']);
+        $markerArray['###GUESTBOOK_ONLYTIME###'] = $this->localContentObject->stdWrap($row['crdate'], $this->conf['time_stdWrap.']);
+        $markerArray['###GUESTBOOK_ONLYDATE###'] = $this->localContentObject->stdWrap($row['crdate'], $this->conf['date_stdWrap.']);
 
         $row['entry'] = $this->cutDown(stripslashes($row['entry']));
         $row['entrycomment'] = stripslashes($row['entrycomment']);
@@ -690,28 +663,26 @@ class tx_veguestbook_pi1 extends AbstractPlugin
     {
         if (is_array($this->LOCAL_LANG) && count($this->LOCAL_LANG) > 0) {
             $markerArray = $this->initFormMarkerArray();
-
             $markerArray['###PID###'] = $this->frontendController->id;
-            $url = $this->getUrl($this->frontendController->id);
-            $markerArray['###ACTION_URL###'] = htmlspecialchars($url);
+            $markerArray['###ACTION_URL###'] = htmlspecialchars($this->getUrl($this->frontendController->id));
             $markerArray['###FORM_ERROR###'] = '';
             $markerArray['###FORM_ERROR_FIELDS###'] = '';
 
-            $this->postvars = GeneralUtility::_GP('tx_veguestbook_pi1') ? GeneralUtility::_GP('tx_veguestbook_pi1') : [];
+            $this->postVars = GeneralUtility::_GP('tx_veguestbook_pi1') ? GeneralUtility::_GP('tx_veguestbook_pi1') : [];
 
-            if (isset ($this->postvars['submitted']) && $this->postvars['submitted'] == 1) {
-                foreach ($this->postvars as $key => $value) {
-                    $value = $this->local_cObj->removeBadHTML($value);
-                    $this->postvars[$key] = $value;
+            if (isset ($this->postVars['submitted']) && $this->postVars['submitted'] == 1) {
+                foreach ($this->postVars as $key => $value) {
+                    $value = $this->localContentObject->removeBadHTML($value);
+                    $this->postVars[$key] = $value;
                 }
 
-                if (isset ($this->postvars['homepage'])) {
-                    if (!strstr($this->postvars['homepage'], 'http://') && !empty ($this->postvars['homepage'])) {
-                        $this->postvars['homepage'] = 'http://' . $this->postvars['homepage'];
+                if (isset ($this->postVars['homepage'])) {
+                    if (!strstr($this->postVars['homepage'], 'http://') && !empty ($this->postVars['homepage'])) {
+                        $this->postVars['homepage'] = 'http://' . $this->postVars['homepage'];
                     }
                 }
 
-                foreach ($this->postvars as $k => $v) {
+                foreach ($this->postVars as $k => $v) {
                     $markerArray['###VALUE_' . strtoupper($k) . '###'] = stripslashes($v);
                 }
 
@@ -736,11 +707,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
                     $saveData['deleted'] = 0;
                     $saveData['sys_language_uid'] = $this->sys_language_uid;
                     $saveData['remote_addr'] = $_SERVER['REMOTE_ADDR'];
-
-                    if ($this->for_tt_news) {
-                        $saveData['uid_tt_news'] = $this->tt_news['tx_ttnews[tt_news]'];
-                    }
-
                     $saveData['hidden'] = 0;
                     if ($this->config['manual_backend_release'] == 1) {
                         $saveData['hidden'] = 1;
@@ -748,12 +714,12 @@ class tx_veguestbook_pi1 extends AbstractPlugin
                     
                     $saveData['entrycomment'] = '';
 
-                    foreach ($this->postvars as $k => $v) {
+                    foreach ($this->postVars as $k => $v) {
                         if (in_array($k, $db_fields)) {
                             if ($this->config['allowedTags']) {
                                 $v = strip_tags($v, $this->config['allowedTags']);
                             }
-                            $saveData[$k] = $this->local_cObj->removeBadHTML($v);
+                            $saveData[$k] = $this->localContentObject->removeBadHTML($v);
                         }
                     }
 
@@ -771,8 +737,8 @@ class tx_veguestbook_pi1 extends AbstractPlugin
                             $this->sendNotificationMail($this->config['notify_mail']);
                         }
 
-                        if (!empty ($this->postvars['email']) && $this->config['feedback_mail']) {
-                            $this->sendFeedbackMail($this->postvars['email']);
+                        if (!empty ($this->postVars['email']) && $this->config['feedback_mail']) {
+                            $this->sendFeedbackMail($this->postVars['email']);
                         }
 
                         if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['ve_guestbook']['postEntryInsertedHook'])) {
@@ -818,7 +784,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
             }
 
             // Pre-fill form data if FE user in logged in
-            if (!$this->postvars && $this->frontendController->loginUser) {
+            if (!$this->postVars && $this->frontendController->loginUser) {
                 $surname_pos = strpos($this->frontendController->fe_user->user['name'], ' ');
                 $markerArray['###VALUE_FIRSTNAME###'] = substr($this->frontendController->fe_user->user['name'], 0, $surname_pos);
                 $markerArray['###VALUE_SURNAME###'] = substr($this->frontendController->fe_user->user['name'], ($surname_pos + 1));
@@ -939,8 +905,8 @@ class tx_veguestbook_pi1 extends AbstractPlugin
             ]
         );
 
-        if (is_array($this->postvars)) {
-            foreach ($this->postvars as $k => $v) {
+        if (is_array($this->postVars)) {
+            foreach ($this->postVars as $k => $v) {
                 $markerArray['###' . strtoupper($k) . '###'] = stripslashes($v);
             }
 
@@ -982,8 +948,8 @@ class tx_veguestbook_pi1 extends AbstractPlugin
             ]
         );
 
-        if (is_array($this->postvars)) {
-            foreach ($this->postvars as $k => $v) {
+        if (is_array($this->postVars)) {
+            foreach ($this->postVars as $k => $v) {
                 $markerArray['###' . strtoupper($k) . '###'] = stripslashes($v);
             }
 
@@ -1016,12 +982,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         
         if (GeneralUtility::_GP('L')) {
             $urlParameters['L'] = GeneralUtility::_GP('L');
-        }
-
-        if (is_array($urlParameters) && is_array($this->tt_news)) {
-            $urlParameters = array_merge($urlParameters, $this->tt_news);
-        } else {
-            $urlParameters = $this->tt_news;
         }
 
         return $this->pi_getPageLink($id, '', $urlParameters);
@@ -1083,24 +1043,24 @@ class tx_veguestbook_pi1 extends AbstractPlugin
     {
         $error = '';
         if (is_array($this->config['obligationfields']) && count($this->config['obligationfields']) > 0) {
-            foreach ($this->config['obligationfields'] as $obl_field) {
-                if (empty ($this->postvars[$obl_field])) {
-                    $error .= '<li>' . ucfirst($this->pi_getLL('form_' . $obl_field)) . "</li>\n";
-                    $this->errorFields['obligationfields'] = $obl_field;
+            foreach ($this->config['obligationfields'] as $obligationField) {
+                if (empty ($this->postVars[$obligationField])) {
+                    $error .= '<li>' . ucfirst($this->pi_getLL('form_' . $obligationField)) . '</li>';
+                    $this->errorFields['obligationfields'] = $obligationField;
                 }
             }
         }
 
-        if ($this->config['email_validation'] && !empty ($this->postvars['email'])) {
-            if (GeneralUtility::validEmail($this->postvars['email']) == false) {
-                $error .= '<li>' . $this->pi_getLL('form_email') . " (" . $this->pi_getLL('form_invalid_field') . ")</li>\n";
+        if ($this->config['email_validation'] && !empty ($this->postVars['email'])) {
+            if (GeneralUtility::validEmail($this->postVars['email']) == false) {
+                $error .= '<li>' . $this->pi_getLL('form_email') . ' (' . $this->pi_getLL('form_invalid_field') . ')</li>';
                 $this->errorFields['email_validation'] = false;
             }
         }
 
-        if ($this->config['website_validation'] && !empty ($this->postvars['homepage']) && $this->postvars['homepage'] != 'http://') {
-            if ($this->isURL($this->postvars['homepage']) == false) {
-                $error .= '<li>' . ucfirst($this->pi_getLL('form_homepage')) . " (" . $this->pi_getLL('form_invalid_field') . ")</li>\n";
+        if ($this->config['website_validation'] && !empty ($this->postVars['homepage']) && $this->postVars['homepage'] != 'http://') {
+            if ($this->isURL($this->postVars['homepage']) == false) {
+                $error .= '<li>' . ucfirst($this->pi_getLL('form_homepage')) . ' (' . $this->pi_getLL('form_invalid_field') . ')</li>';
                 $this->errorFields['website_validation'] = false;
             }
         }
@@ -1108,12 +1068,12 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $errorBlacklist = '';
         
         // blacklist validation
-        if ($this->config['blacklist_mail'] && !empty ($this->postvars['email'])) {
-            $emails_blacklisted = explode(",", $this->config['blacklist_mail']);
+        if ($this->config['blacklist_mail'] && !empty ($this->postVars['email'])) {
+            $emails_blacklisted = explode(',', $this->config['blacklist_mail']);
             if (is_array($emails_blacklisted)) {
                 foreach ($emails_blacklisted as $single_email) {
-                    if (!(strpos($this->postvars['email'], trim($single_email)) === false)) {
-                        $errorBlacklist = '<li>' . $this->pi_getLL('form_email') . " (" . $this->pi_getLL('form_blacklisted') . ")</li>\n";
+                    if (!(strpos($this->postVars['email'], trim($single_email)) === false)) {
+                        $errorBlacklist = '<li>' . $this->pi_getLL('form_email') . ' (' . $this->pi_getLL('form_blacklisted') . ')</li>';
                         $this->errorFields['blacklist_mail'] = false;
                         break;
                     }
@@ -1122,11 +1082,11 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         }
 
         // whitelist validation
-        if ($this->config['whitelist_mail'] && !empty ($this->postvars['email'])) {
-            $emails_whitelisted = explode(",", $this->config['whitelist_mail']);
+        if ($this->config['whitelist_mail'] && !empty ($this->postVars['email'])) {
+            $emails_whitelisted = explode(',', $this->config['whitelist_mail']);
             if (is_array($emails_whitelisted)) {
                 foreach ($emails_whitelisted as $single_email) {
-                    if (!(strpos($this->postvars['email'], trim($single_email)) === false)) {
+                    if (!(strpos($this->postVars['email'], trim($single_email)) === false)) {
                         $errorBlacklist = '';
                         $this->errorFields['blacklist_mail'] = true;
                         break;
@@ -1136,8 +1096,8 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         }
 
         if (!$this->frontendController->loginUser) {
-            if (is_object($this->freeCap) && $this->config['captcha'] == 'sr_freecap' && !$this->freeCap->checkWord($this->postvars['captcha_response'])) {
-                $error .= '<li>' . ucfirst($this->pi_getLL('form_captcha_response')) . " (" . $this->pi_getLL('form_invalid_field') . ")</li>";
+            if (is_object($this->freeCap) && $this->config['captcha'] == 'sr_freecap' && !$this->freeCap->checkWord($this->postVars['captcha_response'])) {
+                $error .= '<li>' . ucfirst($this->pi_getLL('form_captcha_response')) . ' (' . $this->pi_getLL('form_invalid_field') . ')</li>';
                 $this->errorFields['captcha'] = false;
             }
         }
@@ -1148,8 +1108,8 @@ class tx_veguestbook_pi1 extends AbstractPlugin
                 $captchaStr = $_SESSION['tx_captcha_string'];
                 $_SESSION['tx_captcha_string'] = '';
 
-                if ($captchaStr != $this->postvars['captcha_response'] && !empty ($captchaStr)) {
-                    $error .= '<li>' . ucfirst($this->pi_getLL('form_captcha_response')) . " (" . $this->pi_getLL('form_invalid_field') . ")</li>";
+                if ($captchaStr != $this->postVars['captcha_response'] && !empty ($captchaStr)) {
+                    $error .= '<li>' . ucfirst($this->pi_getLL('form_captcha_response')) . ' (' . $this->pi_getLL('form_invalid_field') . ')</li>';
                     $this->errorFields['captcha'] = false;
                 }
             } else {
@@ -1161,7 +1121,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $error .= $errorBlacklist;
 
         if (!empty ($error)) {
-            return "<ul>" . $error . "</ul>";
+            return '<ul>' . $error . '</url>';
         }
     }
 

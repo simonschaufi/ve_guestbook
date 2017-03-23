@@ -1,7 +1,7 @@
 {
 	"name": "simonschaufi/ve_guestbook",
 	"type": "typo3-cms-extension",
-	"description": "Guestbook extension, based on extbase & fluid for TYPO3 CMS",
+	"description": "Guestbook extension for TYPO3 CMS",
 	"keywords": [
 		"TYPO3",
 		"extension",
@@ -20,6 +20,9 @@
 	"license": "GPL-2.0+",
 	"require": {
 		"typo3/cms-core": ">=7.6,<8.0"
+	},
+	"suggest": {
+		"sjbr/sr-freecap": "~2.3"
 	},
 	"autoload": {
 		"psr-4": {

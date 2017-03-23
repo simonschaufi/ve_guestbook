@@ -11,13 +11,13 @@
  ***************************************************************/
 
 $EM_CONF[$_EXTKEY] = array(
-    'title' => 'Modern Guestbook / Commenting system',
-    'description' => 'Modern Guestbook / Commenting system',
-    'author' => 'Udo von Eynern',
-    'author_email' => 'udo@voneynern.de',
-    'author_company' => 'Freelancer Udo von Eynern',
+    'title' => 'Modern Guestbook',
+    'description' => 'Guestbook extension',
+    'author' => 'Simon Schaufelberger, Udo von Eynern',
+    'author_email' => 'simonschaufi+veguestbook@gmail.com,udo@voneynern.de',
+    'author_company' => 'Simon Schaufelberger, Udo von Eynern',
     'category' => 'plugin',
-    'version' => '3.1.1',
+    'version' => '3.2.0',
     'state' => 'stable',
     'uploadfolder' => 0,
     'createDirs' => '',
@@ -29,6 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
         'conflicts' => [
         ],
         'suggests' => [
+            'sr_freecap' => '2.1.0'
         ],
     ],
     'autoload' => [

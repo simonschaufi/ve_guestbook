@@ -183,16 +183,6 @@ return [
                 'eval' => 'trim',
             ]
         ],
-        'uid_tt_news' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.uid_tt_news',
-            'config' => [
-                'type' => 'input',
-                'size' => '30',
-                'max' => '50',
-                'eval' => 'trim',
-            ]
-        ],
     ],
     'types' => [
         '0' => ['showitem' => 'hidden;;1;;1-1-1, sys_language_uid, crdate, tstamp, firstname, surname, email, homepage, place, entry, entrycomment, remote_addr;']

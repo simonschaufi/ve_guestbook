@@ -23,7 +23,6 @@
             <label index="tx_veguestbook_entries.entry">Message</label>
             <label index="tx_veguestbook_entries.entrycomment">Comment</label>
             <label index="tx_veguestbook_entries.remote_addr">Remote Address</label>
-            <label index="tx_veguestbook_entries.uid_tt_news">[uid_tt_news]</label>
             <label index="tx_veguestbook_entries.crdate">Creation date/time</label>
             <label index="tx_veguestbook_entries.tstamp">Last update</label>
         </languageKey>
@@ -44,7 +43,7 @@
             <label index="tx_veguestbook_entries.firstname">Vorname</label>
             <label index="tx_veguestbook_entries.surname">Nachname</label>
             <label index="tx_veguestbook_entries.email">E-Mail</label>
-            <label index="tx_veguestbook_entries.homepage">Homepage</label>
+            <label index="tx_veguestbook_entries.homepage">Webseite</label>
             <label index="tx_veguestbook_entries.place">Ort</label>
             <label index="tx_veguestbook_entries.entry">Nachricht</label>
             <label index="tx_veguestbook_entries.entrycomment">Kommentar</label>
@@ -77,7 +76,6 @@
             <label index="tx_veguestbook_entries.entry">Messaggio</label>
             <label index="tx_veguestbook_entries.entrycomment">Commento</label>
             <label index="tx_veguestbook_entries.remote_addr">Indirizzo Remoto</label>
-            <label index="tx_veguestbook_entries.uid_tt_news">[uid_tt_news]</label>
             <label index="tx_veguestbook_entries.crdate">Data/Ora di creazione</label>
             <label index="tx_veguestbook_entries.tstamp">Ultimo aggiornamento</label>
             <label index="tt_content.list_type_pi1">Guestbook</label>
@@ -169,20 +167,6 @@
             <label index="tx_veguestbook_entries.entrycomment">Comentário</label>
             <label index="tx_veguestbook_entries.crdate">Data e hora de criação</label>
             <label index="tt_content.list_type_pi1">Livro de visitas</label>
-        </languageKey>
-        <languageKey index="ua" type="array">
-            <label index="tx_veguestbook_entries">Çàïèñ ó ãîñòüîâ³é êíèç³</label>
-            <label index="tx_veguestbook_entries.firstname">²ì\'ÿ</label>
-            <label index="tx_veguestbook_entries.surname">Ïð³çâèùå</label>
-            <label index="tx_veguestbook_entries.email">E-Mail</label>
-            <label index="tx_veguestbook_entries.homepage">Âåá-ñòîð³íêà</label>
-            <label index="tx_veguestbook_entries.place">Çâ³äêè</label>
-            <label index="tx_veguestbook_entries.entry">Ïîâ³äîìëåííÿ</label>
-            <label index="tx_veguestbook_entries.entrycomment">Êîìåíòàð</label>
-            <label index="tx_veguestbook_entries.uid_tt_news">[uid_tt_news]</label>
-            <label index="tx_veguestbook_entries.crdate">Äàòà ñòâîðåííÿ</label>
-            <label index="tx_veguestbook_entries.tstamp">Îñòàííº îíîâëåííÿ</label>
-            <label index="tt_content.list_type_pi1">Ãîñòüîâà êíèãà</label>
         </languageKey>
     </data>
 </T3locallang>
