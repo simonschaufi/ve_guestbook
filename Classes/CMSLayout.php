@@ -35,14 +35,14 @@ class CMSLayout
      * @param    object $pObj A reference to calling object
      * @return    string        Information about pi1 plugin
      */
-    function getExtensionSummary($params, &$pObj)
+    public function getExtensionSummary($params, &$pObj)
     {
         $result = '';
         if ($params['row']['list_type'] == 've_guestbook_pi1') {
             $data = GeneralUtility::xml2array($params['row']['pi_flexform']);
             if (is_array($data) && $data['data']['sDEF']['lDEF']['what_to_display']['vDEF']) {
                 $result = sprintf(
-                    $GLOBALS['LANG']->sL('LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:cms_layout.mode'), 
+                    $GLOBALS['LANG']->sL('LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:cms_layout.mode'),
                     $data['data']['sDEF']['lDEF']['what_to_display']['vDEF']
                 );
             }

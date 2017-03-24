@@ -102,14 +102,14 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $this->init($conf);
 
         switch ($this->code) {
-            case 'TEASER' :
-            case 'LIST' :
+            case 'TEASER':
+            case 'LIST':
                 $content = $this->displayList();
                 break;
-            case 'FORM' :
+            case 'FORM':
                 $content .= $this->displayForm();
                 break;
-            default :
+            default:
                 // To-Do: Help Template
                 break;
         }
@@ -171,11 +171,11 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         // Obligation fields in the form
         $this->config['obligationfields'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'obligation_fields', 's_form');
 
-        if (!empty ($this->config['obligationfields'])) {
+        if (!empty($this->config['obligationfields'])) {
             $this->config['obligationfields'] = explode(',', $this->config['obligationfields']);
         }
 
-        if (!empty ($this->conf['obligationfields'])) {
+        if (!empty($this->conf['obligationfields'])) {
             if (is_array($this->config['obligationfields']) && count($this->config['obligationfields']) > 0) {
                 $this->config['obligationfields'] = array_merge(explode(',', $this->conf['obligationfields']), $this->config['obligationfields']);
             } else {
@@ -202,7 +202,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $this->config['strip_tags'] = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'strip_tags', 's_form');
 
         // Website-Validation
-        if (!empty ($this->conf['allowedTags'])) {
+        if (!empty($this->conf['allowedTags'])) {
             $this->config['allowedTags'] = $this->conf['allowedTags'];
         } else {
             $this->config['allowedTags'] = false;
@@ -306,7 +306,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
             $markerArray = $this->getPageBrowser($markerArray);
         } else {
-
             $this->internal['res_count'] = $count;
             $this->internal['maxPages'] = $this->conf['pageBrowser.']['maxPages'] > 0 ? $this->conf['pageBrowser.']['maxPages'] : 10;
 
@@ -320,7 +319,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
         if ($count > 0) {
             $orderBy = '';
-            if (!empty ($this->config['sortingField']) && !empty ($this->config['sortingDirection'])) {
+            if (!empty($this->config['sortingField']) && !empty($this->config['sortingDirection'])) {
                 $orderBy = $this->config['sortingField'] . ' ' . $this->config['sortingDirection'];
             }
 
@@ -432,7 +431,6 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $end_at = ($beginAt + $this->config['limit']);
 
         if ($this->conf['pageBrowser.']['showResultCount']) {
-
             $markerArray['###RESULT_COUNT###'] = ($this->internal['res_count'] ? sprintf(str_replace('###SPAN_BEGIN###', '<span' . $this->pi_classParam('browsebox-strong') . '>', $this->pi_getLL('pi_list_browseresults_displays', 'Displaying results ###SPAN_BEGIN###%s to %s</span> out of ###SPAN_BEGIN###%s</span>')), $this->internal['res_count'] > 0 ? ($beginAt + 1) : 0, min([
                 $this->internal['res_count'],
                 $end_at
@@ -464,15 +462,15 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
             $markerArray = $this->getItemMarkerArray($row);
 
-            if (empty ($row['email'])) {
+            if (empty($row['email'])) {
                 $current_templatecode = $this->cObj->substituteSubpart($current_templatecode, '###ENTRY_EMAIL###', '');
             }
 
-            if (empty ($row['homepage']) || $row['homepage'] == 'http://') {
+            if (empty($row['homepage']) || $row['homepage'] == 'http://') {
                 $current_templatecode = $this->cObj->substituteSubpart($current_templatecode, '###ENTRY_HOMEPAGE###', '');
             }
 
-            if (empty ($row['entrycomment'])) {
+            if (empty($row['entrycomment'])) {
                 $current_templatecode = $this->cObj->substituteSubpart($current_templatecode, '###ENTRY_ENTRYCOMMENT###', '');
             }
 
@@ -506,7 +504,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $markerArray['###GUESTBOOK_FIRSTNAME###'] = $this->cutDown($row['firstname']);
         $markerArray['###GUESTBOOK_SURNAME###'] = $this->cutDown($row['surname']);
 
-        if (!empty ($row['place'])) {
+        if (!empty($row['place'])) {
             $markerArray['###GUESTBOOK_FROM###'] = $this->pi_getLL('list_from_place');
             $markerArray['###GUESTBOOK_PLACE###'] = $this->cutDown($row['place']);
         } else {
@@ -514,17 +512,17 @@ class tx_veguestbook_pi1 extends AbstractPlugin
             $markerArray['###GUESTBOOK_PLACE###'] = '';
         }
 
-        if (!empty ($row['email'])) {
+        if (!empty($row['email'])) {
             $markerArray['###GUESTBOOK_EMAIL_URL###'] = htmlspecialchars($this->get_url('', $row['email']));
 
-            if (!empty ($this->config['email_subst'])) {
+            if (!empty($this->config['email_subst'])) {
                 $markerArray['###GUESTBOOK_EMAIL###'] = str_replace('@', $this->config['email_subst'], trim($row['email']));
             } else {
                 $markerArray['###GUESTBOOK_EMAIL###'] = trim($row['email']);
             }
         }
 
-        if (!empty ($row['homepage']) && $row['homepage'] != 'http://') {
+        if (!empty($row['homepage']) && $row['homepage'] != 'http://') {
             $markerArray['###GUESTBOOK_HOMEPAGE_URL###'] = htmlspecialchars($this->get_url('', $row['homepage']));
             $markerArray['###GUESTBOOK_HOMEPAGE###'] = $this->cObj->typolink($this->cObj->stdWrap($row['homepage'], $this->conf['homepage.']), $this->conf);
         }
@@ -617,14 +615,14 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $unsetVars = (array)$unsetVars;
         if ($usePiVars) {
             $vars = array_merge($this->piVars, $vars); //vars override pivars
-            while (list (, $key) = each($unsetVars)) {
+            while (list(, $key) = each($unsetVars)) {
                 // unset vars override anything
-                unset ($vars[$key]);
+                unset($vars[$key]);
             }
         }
 
         $piVars = [];
-        while (list ($key, $val) = each($vars)) {
+        while (list($key, $val) = each($vars)) {
             $piVars[$this->prefixId . '[' . $key . ']'] = $val;
         }
         if ($tag) {
@@ -670,14 +668,14 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
             $this->postVars = GeneralUtility::_GP('tx_veguestbook_pi1') ? GeneralUtility::_GP('tx_veguestbook_pi1') : [];
 
-            if (isset ($this->postVars['submitted']) && $this->postVars['submitted'] == 1) {
+            if (isset($this->postVars['submitted']) && $this->postVars['submitted'] == 1) {
                 foreach ($this->postVars as $key => $value) {
                     $value = $this->localContentObject->removeBadHTML($value);
                     $this->postVars[$key] = $value;
                 }
 
-                if (isset ($this->postVars['homepage'])) {
-                    if (!strstr($this->postVars['homepage'], 'http://') && !empty ($this->postVars['homepage'])) {
+                if (isset($this->postVars['homepage'])) {
+                    if (!strstr($this->postVars['homepage'], 'http://') && !empty($this->postVars['homepage'])) {
                         $this->postVars['homepage'] = 'http://' . $this->postVars['homepage'];
                     }
                 }
@@ -695,7 +693,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
                     }
                 }
 
-                if (!empty ($error)) {
+                if (!empty($error)) {
                     $markerArray['###FORM_ERROR###'] = $this->pi_getLL('form_error');
                     $markerArray['###FORM_ERROR_FIELDS###'] = $error;
                 } else {
@@ -733,11 +731,11 @@ class tx_veguestbook_pi1 extends AbstractPlugin
                     $insert = $this->databaseConnection->exec_INSERTquery($this->strEntryTable, $saveData);
 
                     if ($insert) {
-                        if (!empty ($this->config['notify_mail'])) {
+                        if (!empty($this->config['notify_mail'])) {
                             $this->sendNotificationMail($this->config['notify_mail']);
                         }
 
-                        if (!empty ($this->postVars['email']) && $this->config['feedback_mail']) {
+                        if (!empty($this->postVars['email']) && $this->config['feedback_mail']) {
                             $this->sendFeedbackMail($this->postVars['email']);
                         }
 
@@ -842,12 +840,12 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $queryString = explode('&', GeneralUtility::implodeArrayForUrl('', $GLOBALS['_GET']));
         
         if ($queryString) {
-            while (list (, $val) = each($queryString)) {
+            while (list(, $val) = each($queryString)) {
                 $tmp = explode('=', $val);
                 $paramArray[$tmp[0]] = $tmp[1];
             }
 
-            while (list ($pk, $pv) = each($paramArray)) {
+            while (list($pk, $pv) = each($paramArray)) {
                 if (GeneralUtility::inList($addParamsList, $pk)) {
                     $addParamArray[$pk] = $pv;
                 }
@@ -864,7 +862,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
      */
     protected function getEmailFromName()
     {
-        if (!empty ($this->config['email_from_name'])) {
+        if (!empty($this->config['email_from_name'])) {
             return $this->config['email_from_name'];
         } else {
             return 've_guestbook';
@@ -878,7 +876,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
      */
     protected function getEmailFromMail()
     {
-        if (!empty ($this->config['email_from_mail'])) {
+        if (!empty($this->config['email_from_mail'])) {
             return $this->config['email_from_mail'];
         } else {
             return 've_guestbook@' . GeneralUtility::getHostname();
@@ -1016,7 +1014,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         if ($this->conf['emoticons.']['active'] == 1) {
             reset($this->conf['emoticons.']['subst.']);
             $emoConf = $this->conf['emoticons.'];
-            while (list ($source, $dest) = each($emoConf['subst.'])) {
+            while (list($source, $dest) = each($emoConf['subst.'])) {
                 $imgFile = str_replace('###EMOTICON###', $dest['val'], $emoConf['10.']['file']);
 
                 if (strstr($dest['str'], '||')) {
@@ -1044,21 +1042,21 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $error = '';
         if (is_array($this->config['obligationfields']) && count($this->config['obligationfields']) > 0) {
             foreach ($this->config['obligationfields'] as $obligationField) {
-                if (empty ($this->postVars[$obligationField])) {
+                if (empty($this->postVars[$obligationField])) {
                     $error .= '<li>' . ucfirst($this->pi_getLL('form_' . $obligationField)) . '</li>';
                     $this->errorFields['obligationfields'] = $obligationField;
                 }
             }
         }
 
-        if ($this->config['email_validation'] && !empty ($this->postVars['email'])) {
+        if ($this->config['email_validation'] && !empty($this->postVars['email'])) {
             if (GeneralUtility::validEmail($this->postVars['email']) == false) {
                 $error .= '<li>' . $this->pi_getLL('form_email') . ' (' . $this->pi_getLL('form_invalid_field') . ')</li>';
                 $this->errorFields['email_validation'] = false;
             }
         }
 
-        if ($this->config['website_validation'] && !empty ($this->postVars['homepage']) && $this->postVars['homepage'] != 'http://') {
+        if ($this->config['website_validation'] && !empty($this->postVars['homepage']) && $this->postVars['homepage'] != 'http://') {
             if ($this->isURL($this->postVars['homepage']) == false) {
                 $error .= '<li>' . ucfirst($this->pi_getLL('form_homepage')) . ' (' . $this->pi_getLL('form_invalid_field') . ')</li>';
                 $this->errorFields['website_validation'] = false;
@@ -1068,7 +1066,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $errorBlacklist = '';
         
         // blacklist validation
-        if ($this->config['blacklist_mail'] && !empty ($this->postVars['email'])) {
+        if ($this->config['blacklist_mail'] && !empty($this->postVars['email'])) {
             $emails_blacklisted = explode(',', $this->config['blacklist_mail']);
             if (is_array($emails_blacklisted)) {
                 foreach ($emails_blacklisted as $single_email) {
@@ -1082,7 +1080,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         }
 
         // whitelist validation
-        if ($this->config['whitelist_mail'] && !empty ($this->postVars['email'])) {
+        if ($this->config['whitelist_mail'] && !empty($this->postVars['email'])) {
             $emails_whitelisted = explode(',', $this->config['whitelist_mail']);
             if (is_array($emails_whitelisted)) {
                 foreach ($emails_whitelisted as $single_email) {
@@ -1104,11 +1102,11 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
         if (ExtensionManagementUtility::isLoaded('captcha') && $this->config['captcha'] == 'captcha') {
             session_start();
-            if (isset ($_SESSION['tx_captcha_string'])) {
+            if (isset($_SESSION['tx_captcha_string'])) {
                 $captchaStr = $_SESSION['tx_captcha_string'];
                 $_SESSION['tx_captcha_string'] = '';
 
-                if ($captchaStr != $this->postVars['captcha_response'] && !empty ($captchaStr)) {
+                if ($captchaStr != $this->postVars['captcha_response'] && !empty($captchaStr)) {
                     $error .= '<li>' . ucfirst($this->pi_getLL('form_captcha_response')) . ' (' . $this->pi_getLL('form_invalid_field') . ')</li>';
                     $this->errorFields['captcha'] = false;
                 }
@@ -1120,7 +1118,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
         $error .= $errorBlacklist;
 
-        if (!empty ($error)) {
+        if (!empty($error)) {
             return '<ul>' . $error . '</url>';
         }
     }

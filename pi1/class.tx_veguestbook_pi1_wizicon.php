@@ -39,7 +39,7 @@ class tx_veguestbook_pi1_wizicon
      * @param array $wizardItems Input array with wizard items for plugins
      * @return array Modified input array, having the item for tt_address pi1 added.
      */
-    function proc($wizardItems)
+    public function proc($wizardItems)
     {
         global $LANG;
 
@@ -60,7 +60,7 @@ class tx_veguestbook_pi1_wizicon
      *
      * @return array The LOCAL_LANG array
      */
-    function includeLocalLang()
+    public function includeLocalLang()
     {
         $llFile = ExtensionManagementUtility::extPath('ve_guestbook') . 'Resources/Private/Language/locallang_wizicon.xml';
         
