@@ -20,7 +20,7 @@ RTE.config.tx_veguestbook_entries.entry {
 }
 ');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPItoST43($_EXTKEY, 'pi1/class.tx_veguestbook_pi1.php', '_pi1', 'list_type', 1);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPItoST43($_EXTKEY, 'pi1/class.tx_veguestbook_pi1.php', '_pi1', 'list_type', 0);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript(
     $_EXTKEY,
     'setup',

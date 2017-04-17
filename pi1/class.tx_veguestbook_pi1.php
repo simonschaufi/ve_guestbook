@@ -142,6 +142,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
 
         if ($this->code == 'FORM') {
             $this->pi_USER_INT_obj = 1;
+            $this->pi_checkCHash = false;
         } else {
             $this->pi_USER_INT_obj = 0;
         }
@@ -1119,7 +1120,7 @@ class tx_veguestbook_pi1 extends AbstractPlugin
         $error .= $errorBlacklist;
 
         if (!empty($error)) {
-            return '<ul>' . $error . '</url>';
+            return '<ul>' . $error . '</ul>';
         }
     }
 
