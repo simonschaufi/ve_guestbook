@@ -24,6 +24,7 @@
 
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Core\Mail\MailMessage;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\HttpUtility;
@@ -89,6 +90,11 @@ class tx_veguestbook_pi1 extends AbstractPlugin
     protected $freeCap;
 
     /**
+     * @var PageRenderer
+     */
+    protected $pageRenderer;
+
+    /**
      * Main Function: calls the init() function to setup the configuration and decides by the
      * given CODEs which of the functions to display news should by called.
      *
@@ -100,6 +106,16 @@ class tx_veguestbook_pi1 extends AbstractPlugin
     {
         $this->localContentObject = GeneralUtility::makeInstance(ContentObjectRenderer::class);
         $this->init($conf);
+
+        $this->pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        if (isset($conf['settings.']['cssFile'])) {
+            $cssFile = $conf['settings.']['cssFile'];
+            $cssFileCompress = isset($conf['settings.']['cssFileCompress']) ? (bool)$conf['settings.']['cssFileCompress'] : false;
+            $excludeFromConcatenation = isset($conf['settings.']['cssFileExcludeFromConcatenation']) ? (bool)$conf['settings.']['cssFileExcludeFromConcatenation'] : false;
+
+            $path = $this->frontendController->tmpl->getFileName($cssFile);
+            $this->pageRenderer->addCssFile($path, 'stylesheet', 'all', '', $cssFileCompress, false, '', $excludeFromConcatenation);
+        }
 
         switch ($this->code) {
             case 'TEASER':

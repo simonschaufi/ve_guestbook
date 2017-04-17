@@ -1,6 +1,18 @@
 plugin.tx_veguestbook_pi1 {
+	# cat=plugin.tx_veguestbook_pi1/file; type=string; label=HTML template path
 	file.templateFile = EXT:ve_guestbook/Resources/Private/Templates/template.html
+
 	emoticons.active = 0
+
 	email_from_name =
 	email_from_mail =
+
+	settings {
+		# cat=plugin.tx_veguestbook_pi1/file; type=string; label=Path to CSS file
+		cssFile = EXT:ve_guestbook/Resources/Public/CSS/Styles.css
+		# cat=plugin.tx_veguestbook_pi1/file; type=boolean; label=Should the CSS file be compressed?
+		cssFileCompress = 1
+		# cat=plugin.tx_veguestbook_pi1/file; type=boolean; label=Should the CSS file be concatenated?
+		cssFileExcludeFromConcatenation = 1
+	}
 }
