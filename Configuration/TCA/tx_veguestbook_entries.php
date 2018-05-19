@@ -48,8 +48,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.crdate',
             'config' => [
                 'type' => 'input',
-                'size' => '10',
-                'max' => '20',
+                'size' => 10,
+                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => '0',
                 'default' => '0'
@@ -61,8 +61,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.tstamp',
             'config' => [
                 'type' => 'input',
-                'size' => '10',
-                'max' => '20',
+                'size' => 10,
+                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => '0',
                 'default' => '0'
@@ -73,8 +73,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.firstname',
             'config' => [
                 'type' => 'input',
-                'size' => '30',
-                'max' => '25',
+                'size' => 30,
+                'max' => 25,
                 'eval' => 'trim',
             ]
         ],
@@ -83,7 +83,7 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.surname',
             'config' => [
                 'type' => 'input',
-                'size' => '30',
+                'size' => 30,
                 'eval' => 'trim',
             ]
         ],
@@ -92,8 +92,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.email',
             'config' => [
                 'type' => 'input',
-                'size' => '30',
-                'max' => '50',
+                'size' => 30,
+                'max' => 50,
                 'eval' => 'trim',
                 'wizards' => [
                     '_PADDING' => 2,
@@ -121,8 +121,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.homepage',
             'config' => [
                 'type' => 'input',
-                'size' => '30',
-                'max' => '2083',
+                'size' => 30,
+                'max' => 2083,
                 'wizards' => [
                     '_PADDING' => 2,
                     'link' => [
@@ -150,8 +150,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.place',
             'config' => [
                 'type' => 'input',
-                'size' => '30',
-                'max' => '50',
+                'size' => 30,
+                'max' => 50,
                 'eval' => 'trim',
             ]
         ],
@@ -160,8 +160,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.entry',
             'config' => [
                 'type' => 'text',
-                'cols' => '30',
-                'rows' => '5',
+                'cols' => 30,
+                'rows' => 5,
             ]
         ],
         'entrycomment' => [
@@ -169,8 +169,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.entrycomment',
             'config' => [
                 'type' => 'text',
-                'cols' => '30',
-                'rows' => '5',
+                'cols' => 30,
+                'rows' => 5,
             ]
         ],
         'remote_addr' => [
@@ -178,8 +178,8 @@ return [
             'label' => 'LLL:EXT:ve_guestbook/Resources/Private/Language/locallang_db.xml:tx_veguestbook_entries.remote_addr',
             'config' => [
                 'type' => 'input',
-                'size' => '30',
-                'max' => '50',
+                'size' => 30,
+                'max' => 50,
                 'eval' => 'trim',
             ]
         ],
