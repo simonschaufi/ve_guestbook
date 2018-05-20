@@ -99,7 +99,7 @@ return [
                     '_PADDING' => 2,
                     'link' => [
                         'type' => 'popup',
-                        'title' => 'LLL:EXT:cms/locallang_ttc.xlf:header_link_formlabel',
+                        'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
                         'icon' => 'link_popup.gif',
                         'module' => [
                             'name' => 'wizard_element_browser',
@@ -127,7 +127,7 @@ return [
                     '_PADDING' => 2,
                     'link' => [
                         'type' => 'popup',
-                        'title' => 'LLL:EXT:cms/locallang_ttc.xlf:header_link_formlabel',
+                        'title' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header_link_formlabel',
                         'icon' => 'link_popup.gif',
                         'module' => [
                             'name' => 'wizard_element_browser',
