@@ -30,7 +30,6 @@
 		}
 	},
 	"replace": {
-		"ve_guestbook": "self.version",
 		"typo3-ter/ve-guestbook": "self.version"
 	}
 }
